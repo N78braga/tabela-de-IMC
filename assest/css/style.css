@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:400,700&display=swap");
+
+:root {
+  --primary-color: rgb(17, 86, 102);
+  --secondary-color: #fff;
+  --primary-color-darcker: rgb(9, 48, 56);
+  --third-color: rgb(14, 160, 189);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  font-family: "Open sans", sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+.container {
+  max-width: 640px;
+  margin: 50px auto;
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+form input,
+form label,
+form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form input {
+  font-size: 24px;
+  height: 50px;
+  padding: 0 20px;
+}
+
+form input:focus {
+  outline: 1px solid var(--third-color);
+}
+
+form button {
+  border: none;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-weight: 700;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+form button:hover {
+  background: var(--primary-color-darcker);
+}
+form button:active {
+  background: var(--third-color);
+}
+.tabela {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabela div {
+  width: 50%;
+}
+.Imc {
+  height: 5px;
+}
+.classificacao {
+  height: 5px;
+}
+.Resultado {
+  height: 5px;
+}
+.imcTabla {
+  height: 5px;
+}
+.peso {
+  height: 160px;
+}
+
+#resultadoImc {
+  background: var(--third-color);
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-weight: 700;
+  height: 50px;
+  margin-top: 30px;
+  display: none; /* Inicialmente escondido */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#resultadoImc.mostrar {
+  display: flex; /* Exibe a div quando a classe 'mostrar' é adicionada */
+}
