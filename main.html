@@ -10,24 +10,24 @@
   </head>
   <body>
     <section class="container">
-      <h1 class="imcTabla">Tabela IMC</h1>
+      <h1 class="tabelaIMC">Tabela IMC</h1>
       <div class="tabela">
         <div class="statusImc">
-          <h4 class="titleImc">IMC</h4>
-          <p class="peso">
+          <h4 class="clasificacao">IMC</h4>
+          <p class="pesoIMC">
             Menos do que 18,5 <br />Entre 18,5 e 24,9 <br />Entre 25 e 29,9
             <br />Entre 30 e 34,9 <br />Entre 35 e 39,9 <br />Mais do que 40
           </p>
         </div>
-        <div class="classificacao">
-          <h4 class="resultado">Resultado</h4>
+        <div class="categorias">
+          <h4 class="categoriaResult">Resultado</h4>
           <p class="statusResult">
             Abaixo do peso <br />Peso normal <br />Sobrepeso <br />Obesidade
             grau 1 <br />Obesidade grau 2 <br />Obesidade grau 3
           </p>
         </div>
       </div>
-      <h1>Calcule seu IMC</h1>
+      <h1 class="inputImc">Calcule seu IMC</h1>
       <form action="/" id="formulario" method="GET">
         <label for="peso">PESO:</label>
         <input class="peso1" name="peso" id="peso" />
@@ -36,7 +36,7 @@
         <button type="submit">CALCULAR</button>
       </form>
 
-      <div id="resultadoImc"></div>
+      <div id="resultado"></div>
     </section>
 
     <script src="./assest/js/main.js"></script>

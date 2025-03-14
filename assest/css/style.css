@@ -5,6 +5,7 @@
   --secondary-color: #fff;
   --primary-color-darcker: rgb(9, 48, 56);
   --third-color: rgb(14, 160, 189);
+  --fourth-color: rgb(235, 57, 95);
 }
 
 * {
@@ -25,6 +26,7 @@ body {
   margin: 50px auto;
   background: var(--secondary-color);
   padding: 20px;
+  margin-bottom: 40px;
   border-radius: 10px;
 }
 
@@ -40,6 +42,8 @@ form input {
   font-size: 24px;
   height: 50px;
   padding: 0 20px;
+  border-radius: 10px;
+  border: 1px solid;
 }
 
 form input:focus {
@@ -55,6 +59,7 @@ form button {
   height: 50px;
   cursor: pointer;
   margin-top: 30px;
+  border-radius: 10px;
 }
 
 form button:hover {
@@ -70,36 +75,72 @@ form button:active {
 
 .tabela div {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .Imc {
   height: 5px;
 }
-.classificacao {
+.categorias {
   height: 5px;
 }
-.Resultado {
+.categoriaResult {
+  height: 5px;
+  margin-left: -75px;
+  margin-top: 15px;
+}
+.statusResult {
+  height: 5px;
+  margin-top: 5px;
+}
+.pesoIMC {
+  height: 5px;
+  margin-top: 5px;
+}
+
+.clasificacao {
+  height: 5px;
+  margin-left: -145px;
+  margin-top: 20px;
+}
+
+.tabelaIMC {
+  height: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.categoriaResult {
   height: 5px;
 }
-.imcTabla {
-  height: 5px;
+.inputImc {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .peso {
   height: 160px;
 }
-
-#resultadoImc {
+#formulario {
+  margin-top: -190px;
+}
+.mostrar,
+.invalido {
   background: var(--third-color);
   color: var(--secondary-color);
-  font-size: 18px;
-  font-weight: 700;
-  height: 50px;
-  margin-top: 30px;
-  display: none; /* Inicialmente escondido */
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
-
-#resultadoImc.mostrar {
-  display: flex; /* Exibe a div quando a classe 'mostrar' é adicionada */
+.invalido {
+  background: var(--fourth-color);
 }

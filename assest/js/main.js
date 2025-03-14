@@ -1,59 +1,85 @@
-function imc() {
-  const form = document.querySelector("#formulario");
-  const resultadoImc = document.querySelector("#resultadoImc");
+const form = document.querySelector("#formulario");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  // Função para calcular o IMC e retornar com 2 casas decimais
-  function calculaImc(pesoValor, alturaValor) {
-    return (pesoValor / (alturaValor * alturaValor)).toFixed(2);
+  // Pegando o input inteiro do formulário <input id="altura" class="altura" name="altura">
+  const inputPeso = e.target.querySelector("#peso");
+  const inputAltura = e.target.querySelector("#altura");
+
+  // Pegando o valor do input do formulário
+  const peso = Number(inputPeso.value);
+  const altura = Number(inputAltura.value);
+
+  // Validando os dados
+  if (!peso) {
+    setResult("Peso inválido", false);
+    return;
+  }
+  if (!altura) {
+    setResult("Altura inválida", false);
+    return;
   }
 
-  // Função para determinar a categoria do IMC
-  function calcularImc(resultado) {
-    if (resultado < 18.5) {
-      return "Abaixo do peso";
-    } else if (resultado >= 18.5 && resultado < 25) {
-      return "Peso normal";
-    } else if (resultado >= 25 && resultado < 30) {
-      return "Sobrepeso";
-    } else if (resultado >= 30 && resultado < 35) {
-      return "Obesidade grau I";
-    } else if (resultado >= 35 && resultado < 40) {
-      return "Obesidade grau II (severa)";
-    } else {
-      return "Obesidade grau III (mórbida)";
-    }
-  }
+  // Calculando o IMC
+  const imc = ImcCalculado(peso, altura);
+  const categoria = categoriaImc(imc);
 
-  // Função para lidar com o evento do formulário
-  function recebeEventoForm(evento) {
-    evento.preventDefault();
+  const msg = `Seu IMC e ${imc} (${categoria})`;
+  setResult(msg, true);
+});
 
-    const peso = document.querySelector(".peso1");
-    const altura = document.querySelector(".altura");
-
-    const pesoValor = Number(peso.value);
-    const alturaValor = Number(altura.value);
-
-    const imcResultado = calculaImc(pesoValor, alturaValor);
-    const categoria = calcularImc(imcResultado);
-
-    // Atualizando o DOM com o IMC calculado e a categoria na mesma linha
-    resultadoImc.innerHTML = `<p>IMC: ${imcResultado} - Categoria: ${categoria}</p>`;
-
-    // Tornando a div visível
-    resultadoImc.classList.add("mostrar");
-
-    // Removendo a classe "mostrar" após 5 segundos (5000 milissegundos)
-    setTimeout(() => {
-      resultadoImc.classList.remove("mostrar");
-    }, 5000); // 5000ms = 5 segundos
-
-    // Resetando o formulário
-    form.reset();
-  }
-
-  // Adicionando o evento ao formulário
-  form.addEventListener("submit", recebeEventoForm);
+// Função para calcular o IMC
+function ImcCalculado(peso, altura) {
+  const imc = peso / Math.pow(altura, 2);
+  return imc.toFixed(2);
 }
 
-imc();
+//função para classificar a catedoria do IMC
+function categoriaImc(imc) {
+  const categoria = [
+    "Abaixo do peso",
+    "Peso normal",
+    "Sobrepeso",
+    "Obesidade grau 1",
+    "Obesidade grau 2",
+    "Obesidade grau 3",
+  ];
+
+  if (imc < 18.5) return categoria[0];
+  if (imc < 24.9) return categoria[1];
+  if (imc < 29.9) return categoria[2];
+  if (imc < 34.9) return categoria[3];
+  if (imc < 39.9) return categoria[4];
+  return categoria[5];
+}
+
+function createP() {
+  const p = document.createElement("p");
+  return p;
+}
+
+function setResult(msg, isvalid) {
+  const resultado = document.querySelector("#resultado");
+  resultado.innerHTML = "";
+
+  const p = createP();
+
+  if (isvalid) {
+    p.classList.add("mostrar");
+  } else {
+    p.classList.add("invalido");
+  }
+
+  // Resetando o formulário
+  form.reset();
+
+  p.innerHTML = msg;
+  resultado.appendChild(p);
+
+  // Removendo a classe "mostrar" após 5 segundos (5000 milissegundos)
+  setTimeout(() => {
+    p.classList.remove("mostrar");
+    p.classList.remove("invalido");
+    p.innerHTML = "";
+  }, 5000); // 5000ms = 5 segundos
+}
