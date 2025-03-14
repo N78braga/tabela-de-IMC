@@ -5,7 +5,8 @@
   --secondary-color: #fff;
   --primary-color-darcker: rgb(9, 48, 56);
   --third-color: rgb(14, 160, 189);
-  --fourth-color: rgb(235, 57, 95);
+  --fourth-color: rgb(185, 27, 27);
+  --fifth-color: rgb(9, 122, 9);
 }
 
 * {
@@ -130,7 +131,7 @@ form button:active {
 }
 .mostrar,
 .invalido {
-  background: var(--third-color);
+  background: var(--fifth-color);
   color: var(--secondary-color);
   padding: 10px 20px;
   border-radius: 10px;
